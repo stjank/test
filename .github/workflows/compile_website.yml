@@ -1,0 +1,31 @@
+name: Compile Website
+
+on:
+  push:
+    branches: [ main ]
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    container: 
+      image: rocker/verse:latest    
+    steps:
+      - name: Prepare
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+      - name: Install and Build
+        run: |
+          cd source
+          Rscript -e "bookdown::render_book(input='index.Rmd', output_format='all')"
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          BRANCH: gh-pages
+          FOLDER: docs
+          CLEAN: true
