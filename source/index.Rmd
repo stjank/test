@@ -1,0 +1,27 @@
+---
+title: |
+  "Testbuch"
+subtitle: "Kannst du es lesen?"
+author: |
+  <img style="padding-bottom: 20px; display: block; margin-left: auto;margin-right: auto;" src="Header-BrandenbOERg.jpg" width="100%"></a>
+  **Autor**
+  "Stefan Jank"
+date: <strong>Version 1.0</strong> vom "`r Sys.Date()`" <hr>
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Falls du schon immer mal wissen wolltest, wie ein Buch funktioniert."
+output: "word_document"
+---
+
+# Vorwort
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

@@ -1,0 +1,8 @@
+bookdown::gitbook:
+  config:
+    download: ["pdf", "epub", "odt", "docx"]
+bookdown::pdf_book:
+  latex_engine: xelatex
+bookdown::epub_book: default
+bookdown::odt_document2: default
+bookdown::word_document2: default
